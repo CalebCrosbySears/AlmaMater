@@ -1,0 +1,18 @@
+After cloning the files to a repository on your computer
+open the command prompt.
+
+make sure that you are in the repository by typing 'cd \Repository\location' without the '' and hit enter.
+
+to download the latest version of the project do the following command
+'git pull' enter
+
+to upload changes to the project you will use the following commands
+'git add .' enter
+then
+'git commit -m "message discribing what you added or changed in the project" ' enter
+then 
+'git push' enter
+
+if something goes wrong then type the following command
+'git status'
+there should be information on what to do next
