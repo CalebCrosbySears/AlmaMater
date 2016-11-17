@@ -50,14 +50,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/aboutBtn"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/tvLetter"
         android:background="@drawable/profile"
-        android:layout_below="@+id/tvLetter"
-        android:layout_toLeftOf="@+id/tvLetter"
         android:minHeight="250dp"
         android:minWidth="250dp"
         android:maxHeight="250dp"
-        android:maxWidth="250dp" />
+        android:maxWidth="250dp"
+        android:layout_alignParentStart="false"
+        android:layout_toStartOf="@+id/tvLetter"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_below="@+id/tvSuper" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,10 +67,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="About"
         android:id="@+id/textView"
-        android:textSize="30dp"
+        android:textSize="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="#ffffff" />
+        android:textColor="#096e00" />
 
 </RelativeLayout>

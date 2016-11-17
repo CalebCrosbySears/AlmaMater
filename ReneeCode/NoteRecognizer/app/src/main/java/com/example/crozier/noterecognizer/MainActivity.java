@@ -16,6 +16,8 @@ import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
+import android.media.audiofx.*;
+import android.media.AudioManager;
 
 public class MainActivity extends AppCompatActivity {
     float frequency;
