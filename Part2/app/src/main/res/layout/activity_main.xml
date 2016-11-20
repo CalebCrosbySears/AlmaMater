@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.crozier.part2.MainActivity"
+    android:background="#00704a">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:id="@+id/imageView"
+        android:background="@drawable/ggclogotrans"
+        android:maxHeight="200dp"
+        android:minHeight="200dp"
+        android:minWidth="200dp"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/songProgress"
+        android:minWidth="250dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:indeterminate="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0:00"
+        android:id="@+id/currentTime"
+        android:textColor="#ffffff"
+        android:textIsSelectable="false"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/songProgress"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0:00"
+        android:id="@+id/endTime"
+        android:textColor="#ffffff"
+        android:textIsSelectable="false"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/songProgress"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A"
+        android:id="@+id/tvLetter"
+        android:textColor="#ffffff"
+        android:textSize="50dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="z"
+        android:id="@+id/tvSuper"
+        android:layout_below="@+id/imageView"
+        android:layout_toRightOf="@+id/tvLetter"
+        android:layout_toEndOf="@+id/tvLetter"
+        android:textColor="#ffffff"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#"
+        android:id="@+id/tvSub"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_alignBottom="@+id/tvLetter"
+        android:layout_toRightOf="@+id/tvLetter"
+        android:layout_toEndOf="@+id/tvLetter" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/playBtn"
+        android:layout_below="@+id/currentTime"
+        android:layout_alignLeft="@+id/songProgress"
+        android:layout_alignStart="@+id/songProgress"
+        android:background="@drawable/play" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/stopBtn"
+        android:layout_alignTop="@+id/playBtn"
+        android:layout_alignRight="@+id/songProgress"
+        android:layout_alignEnd="@+id/songProgress"
+        android:background="@drawable/stop" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/pauseBtn"
+        android:layout_alignBottom="@+id/stopBtn"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/pause" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Lyrics"
+        android:id="@+id/lyrics"
+        android:layout_centerHorizontal="true"
+        android:minWidth="50dp"
+        android:layout_above="@+id/songProgress"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About"
+        android:id="@+id/aboutBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
