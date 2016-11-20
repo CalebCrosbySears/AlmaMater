@@ -1,11 +1,20 @@
 package com.example.crozier.part2;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.content.Intent;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioEvent;
 import be.tarsos.dsp.io.android.AudioDispatcherFactory;
@@ -22,8 +31,82 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050, 1024, 0);
 
+
+        //Audio Player - Incomplete.  Not sure why context is red
+        final MediaPlayer mp = MediaPlayer.create(context, R.raw.alma_mater);
+        final ProgressBar progBar = (ProgressBar) findViewById(R.id.songProgress);
+        final int duration = mp.getDuration();
+        final int amountToupdate = duration / 100;
+        Timer mTimer = new Timer();
+        mTimer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!(amountToupdate * progBar.getProgress() >= duration)) {
+                            int p = progBar.getProgress();
+                            p += 1;
+                            progBar.setProgress(p);
+                        }
+                    }
+                });
+            };
+        }, amountToupdate);
+
+        final ImageButton play = (ImageButton) findViewById(R.id.playBtn);
+        //play.setOnTouchListener(this);
+        play.setOnClickListener(new View.OnClickListener() {
+           public void onClick(View v) {
+               mp.start();
+
+               
+
+
+        /* I attempted the transparency here but does not work.  Maybe debug if possible? I think it's a start.
+        This code is below: http://stackoverflow.com/questions/16986402/change-opacity-in-pressed-state-of-image
+        This is using XML to do it.  I created the XML file in drawable: http://stackoverflow.com/questions/16530718/android-how-add-opacity-on-imagebutton-click
+
+                public boolean onTouch(View v, MotionEvent event)
+                {
+                    if(v==play)
+                    {
+                        if(event.getAction() == MotionEvent.ACTION_DOWN)
+                        {
+                            v.setAlpha(.5f);
+                        }
+                        else
+                        {
+                            v.setAlpha(1f);
+                        }
+                        return false;
+                    }
+                }
+            }
+        });
+        */
+
+        final ImageButton stop = (ImageButton) findViewById(R.id.stopBtn);
+        stop.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mp.stop();
+            }
+        });
+
+        final ImageButton pause = (ImageButton) findViewById(R.id.pauseBtn);
+        pause.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //TODO:  Figure out how to pause
+            }
+        });
+
+
+
+
+        //Note Recognizer
+        AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050, 1024, 0);
         //Taken from Tarsos
         dispatcher.addAudioProcessor(new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 22050, 1024, new PitchDetectionHandler() {
 
@@ -46,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
         new Thread(dispatcher, "Audio Dispatcher").start();
-
     }
     public void setNoteText(float frequency, TextView tv1, TextView tv2, TextView tv3){
 
