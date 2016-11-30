@@ -33,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //The About Button
+        Button about = (Button) findViewById(R.id.aboutBtn);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, aboutActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Audio Player - Incomplete.  Not sure why context is red
         final MediaPlayer mp = MediaPlayer.create(MainActivity.this, R.raw.alma_mater);
